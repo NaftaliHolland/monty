@@ -13,12 +13,13 @@
  */
 char **split_line(char *instruction)
 {
-	long unsigned int i;
+	unsigned long int i;
 	char **split_instruction, *token;
+
 	split_instruction = malloc(2 * sizeof(char *));
 
 	i = 0;
-	while(i < sizeof(instruction) - 1)
+	while (i < sizeof(instruction) - 1)
 	{
 		if (instruction[i] == ' ')
 			break;

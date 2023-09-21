@@ -46,12 +46,12 @@ int main(int argc, char **argv)
 		line[bytes_read - 1] = '\0';
 		instruction = split_line(line);
 		func = get_function(instruction[0]);
-		func(&some_stack, line_number);
 		if (arr_len(instruction) > 1)
 		{
 			_argument = atoi(instruction[1]);
 			initialize(&_argument);
 		}
+		func(&some_stack, line_number);
 	}
 	fclose(file_stream);
 
