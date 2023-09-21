@@ -48,7 +48,11 @@ int main(int argc, char **argv)
 		func = get_function(instruction[0]);
 		if (arr_len(instruction) > 1)
 		{
-			_argument = atoi(instruction[1]);
+			if ((_argument = atoi(instruction[1])) == 0)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				exit(EXIT_FAILURE);
+			}
 			initialize(&_argument);
 		}
 		func(&some_stack, line_number);
