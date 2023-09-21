@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	int bytes_read, line_number, _argument;
-	char *line, **instruction;
+	char **instruction, *line;
 	size_t len;
 	FILE *file_stream;
 	stack_t *some_stack;
@@ -36,21 +36,24 @@ int main(int argc, char **argv)
 
 	line_number = 0;
 	some_stack = NULL;
+	line = malloc(sizeof(char) * 20);
+	if (line == NULL)
+		return (-1);
+
 	while ((bytes_read = getline(&line, &len, file_stream)) != -1)
 	{
 		line_number++;
+		line[bytes_read - 1] = '\0';
 		instruction = split_line(line);
 		func = get_function(instruction[0]);
 		func(&some_stack, line_number);
-		if (sizeof(instruction) > 1)
+		if (arr_len(instruction) > 1)
 		{
 			_argument = atoi(instruction[1]);
 			initialize(&_argument);
 		}
 	}
 	fclose(file_stream);
-	printf("Here\n");
-
 
 	return (0);
 }

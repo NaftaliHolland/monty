@@ -13,14 +13,26 @@
  */
 char **split_line(char *instruction)
 {
+	long unsigned int i;
 	char **split_instruction, *token;
 	split_instruction = malloc(2 * sizeof(char *));
-	token = strtok(instruction, " ");
-	split_instruction[0] = token;
-	token = strtok(NULL, " ");
-	if (token == NULL)
-		return (split_instruction);
-	split_instruction[1] = token;
+
+	i = 0;
+	while(i < sizeof(instruction) - 1)
+	{
+		if (instruction[i] == ' ')
+			break;
+		i++;
+	}
+	if (i == sizeof(instruction) - 1)
+		split_instruction[0] = instruction;
+	else
+	{
+		token = strtok(instruction, " ");
+		split_instruction[0] = token;
+		token = strtok(NULL, " ");
+		split_instruction[1] = token;
+	}
 
 	return (split_instruction);
 }
