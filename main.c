@@ -31,9 +31,10 @@ int main(int argc, char **argv)
 	some_stack = NULL;
 	line = malloc(sizeof(char) * 20);
 	if (line == NULL)
-		return (-1);
-
-	while ((bytes_read = getline(&line, &len, file_stream)) != -1)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	} while ((bytes_read = getline(&line, &len, file_stream)) != -1)
 	{
 		line_number++;
 		line[bytes_read - 1] = '\0';
