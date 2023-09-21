@@ -46,9 +46,9 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	stack_t *temp;
 
 	if (stack == NULL || *stack == NULL)
-		return;
-	temp = *stack;
+		exit(EXIT_FAILURE);
 
+	temp = *stack;
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
@@ -77,4 +77,33 @@ void pint(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 
 	printf("%d\n", temp->n);
+}
+/**
+ * pop - removes the top element of the stack
+ *
+ * @stack: pointer to a pointer to the first element of the stack_t stack
+ * @line_number: the line in the file where the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top, *next_node;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	next_node = top->next;
+
+	*stack = next_node;
+	if (next_node != NULL)
+		next_node->prev = NULL;
+
+	free(top);
 }

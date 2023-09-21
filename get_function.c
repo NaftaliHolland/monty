@@ -17,12 +17,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);
