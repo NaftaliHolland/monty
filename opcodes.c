@@ -107,3 +107,16 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	free(top);
 }
+/**
+ * nop - does nothing
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the number of the line of the file where the instruction is
+ *
+ * Return: void
+ *
+ */
+void nop(stack_t **stack __attribute__((unused)),  unsigned int line_number __attribute__((unused)))
+{
+}
+

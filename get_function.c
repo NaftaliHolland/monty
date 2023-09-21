@@ -18,12 +18,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"nop", nop},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 5)
+	while (i < 6)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);

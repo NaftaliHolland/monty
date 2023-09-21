@@ -46,5 +46,6 @@ char **split_line(char *line);
 int arr_len(char **arr);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif
