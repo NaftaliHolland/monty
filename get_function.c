@@ -21,7 +21,7 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 
 	i = 0;
 
-	while (i < (int)(sizeof(functions)))
+	while (i < 3)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);

@@ -23,14 +23,7 @@ int main(int argc, char **argv)
 	file_stream = fopen(argv[1], "r");
 	if (file_stream == NULL)
 	{
-		write(2, "Error: Can't open file", 22);
-		write(2, "\n", 1);
-		exit(EXIT_FAILURE);
-	}
-
-	if (file_stream == NULL)
-	{
-		write(2, "Error creating file stream\n0", 27);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -54,6 +47,11 @@ int main(int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 			initialize(&_argument);
+		}
+		if (func == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, instruction[0]);
+			exit(EXIT_FAILURE);
 		}
 		func(&some_stack, line_number);
 	}
