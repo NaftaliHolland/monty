@@ -44,5 +44,6 @@ void initialize(int *_argument);
 char **read_split(int fd);
 char **split_line(char *line);
 int arr_len(char **arr);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif

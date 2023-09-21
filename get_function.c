@@ -16,12 +16,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t functions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 3)
+	while (i < 4)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);

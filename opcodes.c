@@ -56,3 +56,25 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 
 }
+
+/**
+ * pint - prints values at the top of the stack
+ *
+ * @stack: pointer to a pointer to the first element of a stack_t stack
+ * @line_number: the line number of the opcode
+ *
+ * Return: void
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	if (*stack == NULL || stack == NULL)
+	{
+		fprintf(stderr, "L%d: Can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = *stack;
+
+	printf("%d\n", temp->n);
+}
