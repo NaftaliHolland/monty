@@ -54,7 +54,6 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-	printf("0\n");
 
 }
 
@@ -157,4 +156,37 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	*stack = second;
 
+}
+
+/**
+ * add - adds the top two elements of the stack
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number of the file in which the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	int sum;
+	stack_t *temp, *second;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d:can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	second = temp->next;
+
+	sum = temp->n + second->n;
+
+	second->n = sum;
+	second->prev = NULL;
+	*stack = second;
+
+	free(temp);
 }
