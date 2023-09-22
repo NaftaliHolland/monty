@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	void (*func)(stack_t **stack, unsigned int i);
 	if (argc == 1 || argc > 2)
 	{
-		write(2, "Usage: monty file\n", 18);
+		write(2, "USAGE: monty file\n", 18);
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,6 +37,9 @@ int main(int argc, char **argv)
 	} while ((bytes_read = getline(&line, &len, file_stream)) != -1)
 	{
 		line_number++;
+		if (bytes_read == 1 && line[0] == '\n')
+			continue;
+
 		line[bytes_read - 1] = '\0';
 		instruction = split_line(line);
 		func = get_function(instruction[0]);
