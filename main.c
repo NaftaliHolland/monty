@@ -44,6 +44,8 @@ int main(int argc, char **argv)
 
 		line[bytes_read - 1] = '\0';
 		instruction = split_line(line);
+		if (*instruction[0] == '#')
+			continue;
 		func = get_function(instruction[0]);
 		if (arr_len(instruction) > 1)
 		{
