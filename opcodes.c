@@ -223,3 +223,41 @@ void sub(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
+
+/**
+ * my_div - divides the second top element by the first top element of the stack
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number of the file in which the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void my_div(stack_t **stack, unsigned int line_number)
+{
+	int value;
+	stack_t *temp, *second;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	second = temp->next;
+
+	value = second->n / temp->n;
+
+	second->n = value;
+	second->prev = NULL;
+	*stack = second;
+
+	free(temp);
+}

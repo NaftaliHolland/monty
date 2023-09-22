@@ -22,12 +22,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"sub", sub},
+		{"div", my_div},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 8)
+	while (i < 9)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);
