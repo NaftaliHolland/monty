@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 			}
 			initialize(&_argument);
 		}
-		else if(arr_len(instruction) == 1)
+		else if(arr_len(instruction) == 1 && func == push)
 		{
 			free(line);
 			fclose(file_stream);
