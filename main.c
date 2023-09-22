@@ -77,6 +77,7 @@ int main(int argc, char **argv)
 	}
 	fclose(file_stream);
 	free(line);
+	printf("0\n");
 
 	return (0);
 }
