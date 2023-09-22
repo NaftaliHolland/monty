@@ -24,12 +24,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"sub", sub},
 		{"div", my_div},
 		{"mul", mul},
+		{"mod", mod},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 10)
+	while (i < 11)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);
