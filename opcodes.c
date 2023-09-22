@@ -190,3 +190,36 @@ void add(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
+
+/**
+ * sub - subtracts the top element from the second top element of the stack
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number of the file in which the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int value;
+	stack_t *temp, *second;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	second = temp->next;
+
+	value = second->n - temp->n;
+
+	second->n = value;
+	second->prev = NULL;
+	*stack = second;
+
+	free(temp);
+}
