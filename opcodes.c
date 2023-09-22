@@ -134,16 +134,13 @@ void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *second, *third;
 
-	if (stack == NULL || *stack == NULL)
-		exit(EXIT_FAILURE);
-
-	temp = *stack;
-
-	if (temp->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	temp = *stack;
 
 	second = temp->next;
 	third = second->next;
