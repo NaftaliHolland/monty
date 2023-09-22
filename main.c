@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		func = get_function(instruction[0]);
 		if (arr_len(instruction) > 1)
 		{
-			if((_argument = atoi(instruction[1])) == 0)
+			if((_argument = atoi(instruction[1])) == 0 && func == push)
 			{
 				free(line);
 				fclose(file_stream);

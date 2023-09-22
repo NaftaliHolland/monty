@@ -120,3 +120,43 @@ void nop(stack_t **stack __attribute__((unused)),  unsigned int line_number __at
 {
 }
 
+/**
+ * swap - swaps the two elements of the stack
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp, *second, *third;
+
+	if (stack == NULL || *stack == NULL)
+		exit(EXIT_FAILURE);
+
+	temp = *stack;
+
+	if (temp->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	second = temp->next;
+	third = second->next;
+
+
+	temp->next = second->next;
+	second->prev = NULL;
+	temp->prev = second;
+	second->next = temp;
+
+	if (third != NULL)
+		third->prev = temp;
+
+	*stack = second;
+
+}
