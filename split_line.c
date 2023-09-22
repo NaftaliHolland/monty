@@ -17,6 +17,11 @@ char **split_line(char *instruction)
 	char **split_instruction, *token;
 
 	split_instruction = malloc(2 * sizeof(char *));
+	if (split_instruction == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	i = 0;
 	while (i < sizeof(instruction) - 1)

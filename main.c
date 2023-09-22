@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
 
 int main(int argc, char **argv)
 {
@@ -32,6 +33,7 @@ int main(int argc, char **argv)
 	line = malloc(sizeof(char) * 20);
 	if (line == NULL)
 	{
+		fclose(file_stream);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	} while ((bytes_read = getline(&line, &len, file_stream)) != -1)
@@ -45,21 +47,34 @@ int main(int argc, char **argv)
 		func = get_function(instruction[0]);
 		if (arr_len(instruction) > 1)
 		{
-			if ((_argument = atoi(instruction[1])) == 0)
+			if((_argument = atoi(instruction[1])) == 0)
 			{
+				free(line);
+				fclose(file_stream);
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
 			}
 			initialize(&_argument);
 		}
+		else if(arr_len(instruction) == 1)
+		{
+			free(line);
+			fclose(file_stream);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+
 		if (func == NULL)
 		{
+			free(line);
+			fclose(file_stream);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, instruction[0]);
 			exit(EXIT_FAILURE);
 		}
 		func(&some_stack, line_number);
 	}
 	fclose(file_stream);
+	free(line);
 
 	return (0);
 }
