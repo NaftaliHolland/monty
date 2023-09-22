@@ -66,9 +66,9 @@ int main(int argc, char **argv)
 
 		if (func == NULL)
 		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, instruction[0]);
 			free(line);
 			fclose(file_stream);
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, instruction[0]);
 			exit(EXIT_FAILURE);
 		}
 		func(&some_stack, line_number);
