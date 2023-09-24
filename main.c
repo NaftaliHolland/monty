@@ -81,5 +81,5 @@ int main(int argc, char **argv)
 	fclose(file_stream);
 	free(line);
 
-	return (0);
+	exit(EXIT_SUCCESS);
 }
