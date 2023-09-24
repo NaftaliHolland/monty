@@ -389,3 +389,38 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 	printf("\n");
 }
+
+
+/**
+ * rotl - rotates the stack
+ *
+ * @stack: pointer to a pointer to the head node of the stack
+ * @line_number: the line number in the file where the opcode is
+ *
+ * Return: void
+ *
+ */
+
+void rotl(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *temp, *second, *first;
+
+	if (*stack != NULL)
+	{
+		temp = *stack;
+		first = *stack;
+		second = temp->next;
+
+		while(temp->next != NULL)
+			temp = temp->next;
+
+		if (first->next != NULL)
+		{
+			temp->next = first;
+			first->prev = temp;
+			first->next = NULL;
+			second->prev = NULL;
+			*stack = second;
+		}
+	}
+}

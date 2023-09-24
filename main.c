@@ -49,7 +49,10 @@ int main(int argc, char **argv)
 		func = get_function(instruction[0]);
 		if (arr_len(instruction) > 1)
 		{
-			if((_argument = atoi(instruction[1])) == 0 && func == push)
+			if ((strcmp("0", instruction[1]) == 0) || (strcmp("-0", instruction[1]) == 0))
+				_argument = 0;
+
+			else if((_argument = atoi(instruction[1])) == 0 && func == push)
 			{
 				free(line);
 				fclose(file_stream);
