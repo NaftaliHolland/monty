@@ -106,7 +106,6 @@ void pop(stack_t **stack, unsigned int line_number)
 		next_node->prev = NULL;
 
 	free(top);
-	exit(EXIT_SUCCESS);
 }
 /**
  * nop - does nothing
@@ -119,7 +118,6 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack __attribute__((unused)),  unsigned int line_number __attribute__((unused)))
 {
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -157,7 +155,6 @@ void swap(stack_t **stack, unsigned int line_number)
 		third->prev = temp;
 
 	*stack = second;
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -191,7 +188,6 @@ void add(stack_t **stack, unsigned int line_number)
 	*stack = second;
 
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -225,7 +221,6 @@ void sub(stack_t **stack, unsigned int line_number)
 	*stack = second;
 
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -264,7 +259,6 @@ void my_div(stack_t **stack, unsigned int line_number)
 	*stack = second;
 
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -298,7 +292,6 @@ void mul(stack_t **stack, unsigned int line_number)
 	*stack = second;
 
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -337,7 +330,6 @@ void mod(stack_t **stack, unsigned int line_number)
 	*stack = second;
 
 	free(temp);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -367,7 +359,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	ascii_char = (char)((*stack)->n);
 	printf("%c\n", ascii_char);
-	exit(EXIT_SUCCESS);
 }
 /**
  * pstr - prints the string starting at the top of the stack followed by a new line
@@ -397,5 +388,4 @@ void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 
 	printf("\n");
-	exit(EXIT_SUCCESS);
 }
