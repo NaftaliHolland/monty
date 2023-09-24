@@ -26,12 +26,13 @@ void (*get_function(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{"NULL", NULL}
 	};
 
 	i = 0;
 
-	while (i < 12)
+	while (i < 13)
 	{
 		if (!strcmp(functions[i].opcode, opcode))
 			return (functions[i].f);

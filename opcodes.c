@@ -361,3 +361,32 @@ void pchar(stack_t **stack, unsigned int line_number)
 	ascii_char = (char)((*stack)->n);
 	printf("%c\n", ascii_char);
 }
+/**
+ * pstr - prints the string starting at the top of the stack followed by a new line
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number of the file where the opcodes
+ * 
+ * Return: void
+ *
+ */
+
+void pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *temp;
+	char ascii_char;
+
+	temp = *stack;
+	while (temp != NULL)
+	{
+		if (temp->n <= 0 || temp->n > 127)
+			break;
+
+		ascii_char = (char)(temp->n);
+		printf("%c", ascii_char);
+
+		temp = temp->next;
+	}
+
+	printf("\n");
+}
