@@ -332,3 +332,32 @@ void mod(stack_t **stack, unsigned int line_number)
 
 	free(temp);
 }
+
+/**
+ * pchar - prints the char at the top of the stack
+ *
+ * @stack: pointer to a pointer to the head node of a linked list
+ * @line_number: the line number of the file where the opcode is
+ *
+ * Return: void
+ *
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	char ascii_char;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	ascii_char = (char)((*stack)->n);
+	printf("%c\n", ascii_char);
+}
